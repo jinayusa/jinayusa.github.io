@@ -1,0 +1,47 @@
+/* Inject Tailwind’s layers so we can @apply utilities here */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────
+   PAGE-LEVEL DESIGN PRESETS
+   Everything goes inside @layer components so
+   Tailwind can tree-shake unused styles.
+   ────────────────────────────────────────────── */
+@layer components {
+  /* Page shell – use on each top-level <div> inside a page */
+  .page-wrapper {
+    @apply min-h-screen flex flex-col gap-12
+           px-6 sm:px-10 lg:px-16 py-12
+           text-white;
+  }
+  .section-block {
+      @apply w-full                         /* full-width */
+            py-24 sm:py-32                 /* vertical breathing room */
+            px-6 sm:px-12 lg:px-16;        /* side padding */
+    }
+  /* Titles that appear once per page */
+  .page-title {
+    @apply font-heading text-4xl md:text-5xl
+           font-semibold text-brand-700 mb-8;
+  }
+  .section-bg-light  { @apply bg-white             text-gray-900;  }
+  .section-bg-dark   { @apply bg-gray-900          text-white;     }
+  .section-bg-brand  { @apply bg-cyan-500          text-white;     }
+  .section-bg-none   { @apply bg-transparent;                      }
+
+  /* Section container (wrap feature blocks, etc.) */
+  .page-section {
+    @apply max-w-5xl mx-auto flex flex-col gap-8;
+  }
+
+  /* Reusable call-to-action block */
+  .cta-banner {
+    @apply bg-brand-500 text-white rounded-xl2
+           px-8 py-6 text-center shadow-lg;
+  }
+
+  .section-container {
+    @apply w-full max-w-6xl mx-auto px-6 sm:px-12;
+  }
+}

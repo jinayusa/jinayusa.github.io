@@ -1,0 +1,96 @@
+{
+  "decision-theater-network-asu": {
+    "org": "Decision Theater Network (ASU)",
+    "role": "Software Developer",
+    "location": "Tempe, USA",
+    "date": "June 2024 – Present",
+    "projects": [
+      {
+        "title": "Minerva",
+        "sections": {
+          "Abstract": "Minerva is a decision support platform for policymakers that visualizes international trade, investment flows, and economic vulnerability. It uses a custom index (PIVI) and offers dynamic views of global economic dependencies through map-based interactive dashboards, enabling real-time analysis across source, mid, and destination countries.",
+          "Introduction": "Built to help analysts explore cross-border economic relationships, Minerva includes three core modules—Trade, PIVI, and Investment. Each view presents commodity-specific flows using filters for year, country, and role. These insights enable stakeholders to trace how capital and goods move across borders and understand vulnerability patterns.",
+          "My Role": "Designed modular backend architecture supporting all three views with clear separation of ingestion, transformation, and visualization layers. Built REST APIs, implemented data indexing for country-role filtering, and developed mock data generation tools to simulate realistic traffic for demos. Pushed for modularization over monolith, later adopted by team.",
+          "Team Structure": "Worked in a cross-functional team with 1 frontend developer, 1 backend engineer, 1 data engineer, and regularly collaborated with project managers and domain experts.",
+          "Cross-Functional Collaboration": "Partnered closely with frontend engineers on API schema design, resolved integration mismatches, and ran validation loops for frontend charts. Collaborated with policy analysts to map economic indicators to real-world use cases, refining data models accordingly.",
+          "Schema Alignment & Trust Rebuilding": "After causing a schema mismatch that broke frontend visualizations before a stakeholder demo, I took full ownership, restored compatibility quickly, and implemented validation tests and shared contracts. This rebuilt trust and stabilized future rollouts.",
+          "Mentor / Support Role": "Onboarded a junior engineer, walked them through backend architecture, helped with API schema design, and reviewed their early contributions to ensure alignment with data logic and quality standards.",
+          "Constructive Conflict & Influence": "Initially disagreed with a monolithic architecture and proposed a modular alternative with a working POC. The modular version was later adopted for scale and maintainability. Used respectful dissent and real-world data to influence decision-making.",
+          "Technical Work": "Flask, REST APIs, SQLAlchemy, Redis, GitHub Actions, Pandas, JSON/CSV ingestion, mock data generators, schema validation, EXPLAIN-based SQL optimization, caching, and modular architecture design across ingestion, transformation, and visualization layers."
+        }
+      },
+      {
+        "title": "CuRVE",
+        "sections": {
+          "Abstract": "CuRVE (Colorado River Visualization Enterprise) models Arizona water policy scenarios based on drought levels, usage types, and entity-level rights. It helps policymakers simulate and visualize long-term trade-offs using maps, pie charts, and multi-year forecast data.",
+          "Introduction": "Designed for stakeholders managing Colorado River water distribution, CuRVE enables real-time exploration of how shortages affect water allocation for agriculture, tap, recharge, turf, and exchanges. It offers regional filtering and entity-specific breakdowns, helping inform smarter planning decisions.",
+          "My Role": "Owned ingestion pipelines, filterable APIs, and backend caching. Developed scenario simulation logic, created mock datasets for demos, and debugged a major caching bug by implementing parameter-aware invalidation. Ensured alignment across multiple years and usage categories under tight timelines.",
+          "Team Structure": "Worked with frontend engineers, data/policy analysts, and a technical lead. Collaborated frequently with the project manager to prioritize features and resolve delivery bottlenecks for demos.",
+          "Cross-Functional Collaboration": "Led integration debugging efforts when visualizations broke due to schema mismatches. Aligned with frontend through live testing and schema walkthroughs. Worked with analysts to transform raw water rights data into interpretable backend APIs.",
+          "Schema Alignment & Trust Rebuilding": "Pushed an API update that broke key visualizations just before a stakeholder demo. Took ownership, rolled out a patch, and introduced shared schema documentation, validation tests, and pre-release checkpoints to prevent future issues.",
+          "Mentor / Support Role": "Mentored a junior backend developer struggling with API alignment and frontend expectations. Helped them understand backend flow, supported early task execution, and improved their QA/test ownership.",
+          "Constructive Conflict & Influence": "Challenged a proposed static cache mechanism and demonstrated stale data issues using reproducible tests. Proposed and implemented parameter-aware caching to preserve correctness without sacrificing performance.",
+          "Technical Work": "FastAPI/Flask, REST APIs, parameter-based caching, mock data generation, scenario simulation, CSV cleaning, schema validation, Jupyter, Git, Postman, and data visualization alignment for year-region-usage filters. Developed load-safe APIs for high-visibility demo delivery under deadline."
+        }
+      }
+    ]
+  },
+  "kivee-softech": {
+    "org": "KiVee Softech",
+    "role": "Senior Software Developer",
+    "location": "Surat, India",
+    "date": "Jan 2022 – Jul 2023",
+    "projects": [
+      {
+        "title": "Voice Authentication System",
+        "sections": {
+          "Abstract": "Built a biometric voice verification system to replace passwords and OTPs in banking transactions. The system used MFCC-based speaker verification and was deployed in production environments with real-world acoustic interference.",
+          "Introduction": "This platform allowed users to securely authorize banking transactions using voice as a biometric. It used Mel-Frequency Cepstral Coefficients (MFCCs) to extract unique vocal features, ensuring reliable speaker verification across diverse audio environments.",
+          "My Role": "Designed the complete backend pipeline, built REST APIs for audio intake and verification, integrated the speaker model, and later retrained it on domain-specific noisy audio. Added fallback logic for low-confidence cases, reducing false rejections by 20%.",
+          "Team Structure": "Worked in a small cross-functional team including 1 frontend developer, 1 QA engineer, and a project manager. Owned backend and ML integration work, collaborating with all roles during deployment and tuning.",
+          "Cross-Functional Collaboration": "Collaborated with frontend for real-time voice recording integration and retry handling. Paired with QA to debug real-world failures and validate retraining results. Worked with PMs to manage client expectations and delivery scope.",
+          "Schema Alignment & Trust Rebuilding": "After silent failures due to a response format change, I documented the schema, added validation, and created a shared test endpoint. This stabilized the integration and improved frontend trust.",
+          "Mentor / Support Role": "Mentored a junior backend engineer on MFCC extraction and voice pipeline architecture. Helped them understand latency thresholds and assisted with debugging payload handling.",
+          "Constructive Conflict & Influence": "Opposed a quick-fix threshold tweak and instead collected real-world audio samples, retrained the model, and demoed improvements. Influenced team to adopt noise-aware model with preprocessing.",
+          "Technical Work": "Flask, REST APIs, Python, MFCC (librosa, PyDub), pre-trained speaker models, schema validation, QA collaboration, fallback logic, real-time audio processing, Jupyter, Postman, Git."
+        }
+      },
+      {
+        "title": "Online Booking System",
+        "sections": {
+          "Abstract": "Built a real-time, concurrency-safe online booking platform for a service client. The system handled over 1,000 concurrent requests on launch without slot collisions, using atomic database transactions and rollback safety.",
+          "Introduction": "The booking platform allowed real-time appointment scheduling across services and locations, supporting instant availability checks and conflict-free booking confirmations. It was optimized for high concurrency and stress-tested under production-like conditions.",
+          "My Role": "Owned the entire backend logic for slot availability, booking, and transactional safety. Resolved a critical race condition 48 hours before go-live by rewriting the booking logic using atomic DB transactions with rollback guarantees.",
+          "Team Structure": "Worked in a 4-person team: myself (backend), 1 frontend developer, 1 QA engineer, and 1 project manager. Delivered collaboratively through fast triage loops during final pre-launch cycles.",
+          "Cross-Functional Collaboration": "Synced closely with QA and frontend during critical bug triage. Aligned with frontend on API contracts for real-time confirmation, and worked with PM to manage priorities and avoid launch delays.",
+          "Schema Alignment & Trust Rebuilding": "Fixed a schema removal that broke frontend confirmation flow. Documented endpoints, added validation tests, and created a shared schema doc to prevent future mismatches.",
+          "Mentor / Support Role": "Helped a junior developer simulate concurrent bookings and understand transaction isolation levels. Guided their testing scripts and reviewed stress tests for edge-case handling.",
+          "Constructive Conflict & Influence": "Pushed back against a flag-based patch proposed by a senior engineer. Presented a DB-transaction-based fix with concurrency logs and got team buy-in after demoing its correctness.",
+          "Technical Work": "Flask/FastAPI, PostgreSQL transaction control, REST APIs, JMeter/Postman stress testing, race condition debugging, schema validation, rollback-safe booking logic, Git."
+        }
+      }
+    ]
+  },
+ "kintu-designs": {
+    "org": "Kintu Designs",
+    "role": "Software Developer",
+    "location": "Surat, India",
+    "date": "Feb 2021 – Jan 2022",
+    "projects": [
+      {
+        "title": "Personalized Food Recommendation Chatbot",
+        "sections": {
+          "Abstract": "Developed an NLP-powered chatbot that provided personalized food recommendations based on dietary preferences, restrictions, and user behavior clustering. The system served over 100,000 users and contributed to healthier dietary choices for 10,000+ users.",
+          "Introduction": "The chatbot initially started as a rule-based system but evolved into an intelligent recommendation engine using NLP tools like SpaCy and NLTK. It extracted dietary intent from natural language and adapted over time using clustering-based personalization.",
+          "My Role": "Led backend and NLP development, transitioning the system from hardcoded replies to dynamic classification and recommendation flows. Built APIs, managed session state, and implemented fallback handling for ambiguous inputs. Deployed clustering logic to improve personalization based on historical user behavior.",
+          "Team Structure": "Worked in a 4–5 member agile team including a frontend engineer, UI/UX designer, QA engineer, and product manager. Collaborated closely on every phase from early MVP to scaling.",
+          "Cross-Functional Collaboration": "Collaborated with frontend for real-time message handling and quick reply logic. Partnered with the product manager to prioritize user-centric features (e.g., allergen filters). Debugged concurrency issues with QA during high-usage spikes and refined session reliability.",
+          "Schema Alignment & Trust Rebuilding": "A mid-rollout response schema change broke frontend rendering. I took responsibility, deployed a hotfix, and introduced schema documentation, internal API versioning, and backend validators to prevent future issues.",
+          "Mentor / Support Role": "Mentored a junior teammate working on fallback logic. Walked them through intent classification, input logging, and debugging. Helped them contribute a module that handled ambiguous inputs effectively.",
+          "Constructive Conflict & Influence": "Challenged the use of a rule-based engine by demonstrating a SpaCy/NLTK prototype that interpreted dietary phrases contextually. Influenced the team to adopt NLP gradually, improving user alignment and system adaptability.",
+          "Technical Work": "Python, Flask/FastAPI, REST APIs, SpaCy, NLTK, NLP classification, behavior clustering, MongoDB/JSON, session tracking, fallback logic, chatbot state management, Jupyter, Postman, Git."
+        }
+      }
+    ]
+  }
+}
