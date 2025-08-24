@@ -132,8 +132,11 @@ export default function Navbar() {
 
         {open && (
           <div
-            className="absolute right-0 mt-3 w-56 rounded-xl bg-white/40 dark:bg-black/30 backdrop-blur-lg 
-                       p-4 shadow-2xl flex flex-col gap-4 border border-white/20 animate-fade-in z-50"
+            className="absolute right-0 mt-3 w-56 rounded-xl 
+           backdrop-blur-sm md:backdrop-blur 
+           bg-white/90 dark:bg-black/90 
+           p-4 shadow-2xl flex flex-col gap-4 
+           border border-white/20 animate-fade-in z-50"
           >
             <ThemeToggle />
             <NavLinks

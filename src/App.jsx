@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar          from "./components/Navbar";
 import Home            from "./pages/Home";
 import AboutMe         from "./pages/AboutMe";
@@ -9,10 +9,10 @@ import TwinkleBackground from "./components/TwinkleBackground";
 import SocialLinks     from "./components/SocialLinks";
 import ExperienceDetailPage from "./pages/ExperienceDetailPage";
 import EducationPage from "./pages/EducationPage";
-
+import GlobalScrollUI from "./components/GlobalScrollUI";
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       {/* full-width wrapper -------------------------------------------------- */}
       <div className="w-full">
 
@@ -25,7 +25,7 @@ export default function App() {
         />
 
         <SocialLinks />
-
+        <GlobalScrollUI />
         <Routes>
           <Route path="/"         element={<Home />} />
           <Route path="/about"    element={<AboutMe showEducation={true} />} />
@@ -38,6 +38,6 @@ export default function App() {
         </Routes>
 
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }

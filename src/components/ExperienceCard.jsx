@@ -1,4 +1,3 @@
-//ExperienceCard.jsx
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +10,19 @@ export default function ExperienceCard({
   highlight = false,
   image,
   contributions,
+  imageOverlay,
+  imageOverlayClassName = "top-3 left-3",
 }) {
   const [expanded, setExpanded] = useState(false);
   const toggleExpand = () => setExpanded(!expanded);
   const navigate = useNavigate();
 
   const handleRedirect = () => {
-    const path = `/experience/${org.toLowerCase().replace(/\s+/g, "-").replace(/[()]/g, "").replace(/[^a-z\-]/g, "")}`;
+    const path = `/experience/${org
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[()]/g, "")
+      .replace(/[^a-z\-]/g, "")}`;
     navigate(path);
   };
 
@@ -25,21 +30,29 @@ export default function ExperienceCard({
 
   const CardContent = () => (
     <div className="space-y-2 sm:space-y-1">
-      <p className={
-        isDecisionTheater
-          ? "text-cyan-400 dark:text-cyan-300 font-medium text-sm sm:text-xs"
-          : "text-cyan-500 dark:text-cyan-300 font-medium text-sm sm:text-xs"
-      }>
+      <p
+        className={
+          isDecisionTheater
+            ? "text-cyan-400 dark:text-cyan-300 font-medium text-sm sm:text-xs"
+            : "text-cyan-500 dark:text-cyan-300 font-medium text-sm sm:text-xs"
+        }
+      >
         {date}
       </p>
-      <h3 className={`text-xl sm:text-2xl font-bold ${highlight ? "text-white" : "text-gray-900 dark:text-white"}`}>
+      <h3
+        className={`text-xl sm:text-2xl font-bold ${
+          highlight ? "text-white" : "text-gray-900 dark:text-white"
+        }`}
+      >
         {org}
       </h3>
-      <p className={
-        isDecisionTheater
-          ? "text-gray-400 dark:text-gray-400 text-sm sm:text-base"
-          : "text-gray-600 dark:text-gray-400 text-sm sm:text-base"
-      }>
+      <p
+        className={
+          isDecisionTheater
+            ? "text-gray-400 dark:text-gray-400 text-sm sm:text-base"
+            : "text-gray-600 dark:text-gray-400 text-sm sm:text-base"
+        }
+      >
         {role}
       </p>
 
@@ -54,11 +67,13 @@ export default function ExperienceCard({
         >
           <span>›</span> Contributions
         </button>
-        <span className={
-          isDecisionTheater
-            ? "text-gray-400 dark:text-gray-300 text-sm"
-            : "text-gray-600 dark:text-gray-400 text-sm"
-        }>
+        <span
+          className={
+            isDecisionTheater
+              ? "text-gray-400 dark:text-gray-300 text-sm"
+              : "text-gray-600 dark:text-gray-400 text-sm"
+          }
+        >
           {location}
         </span>
       </div>
@@ -79,16 +94,27 @@ export default function ExperienceCard({
     </div>
   );
 
-  return highlight ? (
-    <div
-      className="relative rounded-3xl overflow-hidden bg-cover bg-center min-h-[280px] text-white p-4 sm:p-4"
-      style={{
-        backgroundImage: `linear-gradient(to top right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${image})`,
-      }}
-    >
-      <CardContent />
-    </div>
-  ) : (
+  // HIGHLIGHT (image background) — overlay supported here
+  if (highlight) {
+    return (
+      <div
+        className="relative rounded-3xl overflow-hidden bg-cover bg-center min-h-[280px] text-white p-4 sm:p-4"
+        style={{
+          backgroundImage: `linear-gradient(to top right, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${image})`,
+        }}
+      >
+        {/* Top-right/left/current badge etc. */}
+        {imageOverlay ? (
+          <div className={"absolute z-10 " + imageOverlayClassName}>{imageOverlay}</div>
+        ) : null}
+
+        <CardContent />
+      </div>
+    );
+  }
+
+  // NON-HIGHLIGHT (no image) — standard list row
+  return (
     <div className="border-t border-gray-300 dark:border-gray-700 py-6 px-6 sm:px-4">
       <CardContent />
     </div>

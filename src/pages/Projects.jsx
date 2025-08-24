@@ -1,6 +1,9 @@
 // src/pages/Projects.jsx
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionHeading from "../components/SectionHeading";
+import CurrentBadge from "../components/CurrentBadge";
+
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#$%&@!";
 
 function decodeText(target, ref, speed = 30) {
@@ -39,6 +42,7 @@ const projects = [
     objective: "Build a high-throughput, low-latency fraud detection engine capable of analyzing over 5,000 events/sec in financial transaction streams. The system blended machine learning with rule-based logic to enable sub-second response times, real-time monitoring, and model hot-swapping, ensuring fraud analysts could respond to threats instantly while maintaining explainability.",
     technologies: "Flask, Kafka, MongoDB",
     skills: "Event stream processing, multithreaded Flask workers, fraud detection, real-time APIs, model hot-swapping",
+    current: true,
   },
   {
     title: "CovenantIQ: AI-Powered Contract Risk Analyzer",
@@ -46,6 +50,7 @@ const projects = [
     objective: "Develop a secure, multi-tenant platform for automating legal contract reviews by detecting risky clauses using NLP and regulatory logic. The tool streamlined clause extraction, risk tagging, and compliance reporting, enabling legal teams to cut contract review time by 40% and minimize manual effort across complex regulatory landscapes.",
     technologies: "Java Spring Boot, React, NLP",
     skills: "Multi-tenant architecture, clause extraction, RBAC, compliance automation",
+    current: true,
   },
   {
     title: "VigilTrial: Clinical Trial Participant Tracker",
@@ -153,9 +158,15 @@ export default function Projects() {
   }, [selectedProject]);
 
   return (
-    <section className="py-24 px-6 sm:px-12 bg-gradient-to-br from-white/30 to-gray-100/30 dark:from-black/30 dark:to-gray-900/30">
+    <section className="py-24 px-6 sm:px-12 bg-gradient-to-br from-white/30 to-gray-100/30 dark:from-black/30 dark:to-gray-900/30 ml-7 sm:ml-0 lg:ml-7">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">Projects</h2>
+       <SectionHeading
+         label="Selected Work"
+         title="Projects"
+         subtitle="A few things I’ve built recently."
+         align="center"
+       />
+
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, idx) => (
             <motion.div
@@ -165,13 +176,26 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               onClick={() => setSelectedProject(project)}
-              className="rounded-2xl backdrop-blur-lg bg-white/40 dark:bg-white/10 border border-white/30 p-6 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+              className="relative rounded-2xl backdrop-blur-lg bg-white/40 dark:bg-white/10
+                        border border-white/30 p-6 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
             >
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{project.title}</h3>
-              <p className="text-sm text-gray-700 dark:text-gray-300">{project.language}</p>
+              {/* Current badge overlay */}
+              {project.current && (
+                <div className="absolute top-3 right-3 z-10">
+                  <CurrentBadge tone="emerald" size="xs" blink />
+                </div>
+              )}
+
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                {project.title}
+              </h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                {project.language}
+              </p>
             </motion.div>
           ))}
         </div>
+
 
         <AnimatePresence>
           {selectedProject && (
@@ -189,24 +213,33 @@ export default function Projects() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <motion.h3
-                      className="text-3xl font-bold mb-2 text-gray-900 dark:text-white"
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-center gap-2 flex-wrap"
+                  >
+                    <h3
+                      className="text-3xl font-bold text-gray-900 dark:text-white"
                       ref={titleRef}
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
                     >
                       {selectedProject.title}
-                    </motion.h3>
-                    <motion.p
-                      className="text-sm text-gray-600 dark:text-gray-400"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <strong>Tech Stack:</strong> {selectedProject.technologies}
-                    </motion.p>
-                  </div>
+                    </h3>
+                    {selectedProject.current && (
+                      <CurrentBadge tone="emerald" size="xs" blink />
+                    )}
+                  </motion.div>
+
+                  <motion.p
+                    className="mt-2 text-sm text-gray-600 dark:text-gray-400"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <strong>Tech Stack:</strong> {selectedProject.technologies}
+                  </motion.p>
+                </div>
+
                   <motion.div
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
