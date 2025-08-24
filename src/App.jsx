@@ -10,6 +10,8 @@ import SocialLinks     from "./components/SocialLinks";
 import ExperienceDetailPage from "./pages/ExperienceDetailPage";
 import EducationPage from "./pages/EducationPage";
 import GlobalScrollUI from "./components/GlobalScrollUI";
+import ScrollToTop from "./components/ScrollToTop";
+
 export default function App() {
   return (
     <Router>
@@ -26,6 +28,7 @@ export default function App() {
 
         <SocialLinks />
         <GlobalScrollUI />
+         <ScrollToTop />
         <Routes>
           <Route path="/"         element={<Home />} />
           <Route path="/about"    element={<AboutMe showEducation={true} />} />

@@ -18,22 +18,22 @@ export default function Home() {
 
       {/* SECTION 2 – ABOUT ME */}
       <section id="about" className="section-block section-bg-none">
-        <AboutMe showEducation={false} />
+        <AboutMe showEducation={true} />
       </section>
 
       {/* SECTION 3 – skills */}
       <section id="skills" className="section-block section-bg-none">
-        <Skills showEducation={false} />
+        <Skills  />
       </section>
       
       {/* SECTION 4 – Projects */}
       <section id="projects" className="section-block section-bg-none">
-        <Projects showEducation={false} />
+        <Projects  />
       </section>
       
       {/* SECTION 5 – Experience */}
       <section id="experience" className="section-block section-bg-none">
-        <Experience showEducation={false} />
+        <Experience />
       </section>
 
       {/* SECTION 6 – CONTACT */}
